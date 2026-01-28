@@ -1,0 +1,7 @@
+﻿  main.c
+C:\Users\Lane\Desktop\PA1\PA1\main.c(36,18): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\PA1\PA1\main.c(43,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\PA1\PA1\main.c(54,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\PA1\PA1\main.c(65,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\PA1\PA1\main.c(77,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+  PA1.vcxproj -> C:\Users\Lane\Desktop\PA1\x64\Debug\PA1.exe
