@@ -45,3 +45,80 @@ int timeToIndex(char time[])
 	}
 	return hours + minutes;
 }
+
+//broken
+void worstSleep(FitbitData list[], char out[])
+{
+    int range[660] = { 0 };
+    char curStart[10] = { 0 };
+    char curEnd[10] = { 0 };
+    char maxStart[10] = { 0 };
+    char maxEnd[10] = { 0 };
+    int cTotal = 0; 
+    int nTotal = 0; 
+    int isStart = 0;
+
+    for (int i = 0; i < 480; i++)
+    {
+        if (i < 180)
+        {
+            range[i] = 1260 + i;
+        }
+        else
+        {
+            range[i] = i - 180;
+        }
+    }
+
+    for (int i = 0; i < 660; i++)
+    {
+        if (list[range[i]].sleepLevel > 1)
+        {
+            if (isStart == 0) 
+            {
+                strcpy(curStart, list[range[i]].minute);
+                isStart = 1;
+            }
+            strcpy(curEnd, list[range[i]].minute);
+            nTotal += list[range[i]].sleepLevel;
+        }
+        else 
+        {
+            if (isStart == 1 && nTotal > cTotal)
+            {
+                cTotal = nTotal;
+                strcpy(maxStart, curStart);
+                strcpy(maxEnd, curEnd);
+            }
+            nTotal = 0;
+            isStart = 0;
+        }
+    }
+
+    if (isStart == 1 && nTotal > cTotal)
+    {
+        cTotal = nTotal;
+        strcpy(maxStart, curStart);
+        strcpy(maxEnd, curEnd);
+    }
+
+    strcat(out, maxStart);
+    strcat(out, " - ");
+    strcat(out, maxEnd);
+}
+
+double avgHeartrate(FitbitData list[])
+{
+	double total = 0;
+	double entries = 0;
+
+	for (int i = 0; i < 1440; i++)
+	{
+		if (list[i].heartRate < 1000 && list[i].heartRate > 0)
+		{
+			total += list[i].heartRate;
+			entries++;
+		}
+	}
+	return total / entries;
+}

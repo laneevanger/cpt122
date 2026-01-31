@@ -2,16 +2,23 @@
 
 int main(void)
 {
-	FILE* inputStream = fopen("CHANGE.csv", "r");
+	FILE* inputStream = fopen("FitbitDataCopy.csv", "r");
 
 	FitbitData entries[1440] = {0};
 	char user[10];
 	char line[125];
 	char header[125];
-	int totalEntries = 0;
+	char sleep[20] = { 0 };
 	int index;
 	char* charTok = NULL;
-
+	
+	double tCal = 0;
+	double tDis = 0;
+	double avgHrate = 0;
+	int tFloors = 0;
+	int mSteps = 0;
+	int tSteps = 0;
+	
 	//user row
 	fgets(line, sizeof(line), inputStream);
 	charTok = strtok(line, ",");
@@ -20,7 +27,6 @@ int main(void)
 
 	//header row
 	fgets(header, sizeof(header), inputStream);
-	//printf("%s", user);
 
 	//cleansing and dedupe 
 	while (fgets(line, sizeof(line), inputStream) != NULL)
@@ -43,6 +49,7 @@ int main(void)
 				if (charTok[0] != NULL)
 				{
 					entries[index].calories = atof(charTok);
+					tCal += entries[index].calories;
 				}
 				else
 				{
@@ -54,6 +61,7 @@ int main(void)
 				if (charTok[0] != NULL)
 				{
 					entries[index].distance = atof(charTok);
+					tDis += entries[index].distance;
 				}
 				else
 				{
@@ -65,6 +73,7 @@ int main(void)
 				if (charTok[0] != NULL)
 				{
 					entries[index].floors = atoi(charTok);
+					tFloors += entries[index].floors;
 				}
 				else
 				{
@@ -77,6 +86,7 @@ int main(void)
 				if (charTok[0] != NULL)
 				{
 					entries[index].heartRate = atoi(charTok);
+					avgHrate += entries[index].heartRate;
 				}
 				else
 				{
@@ -89,12 +99,19 @@ int main(void)
 				if (charTok != NULL)
 				{
 					entries[index].steps = atoi(charTok);
+					tSteps += entries[index].steps;
+					if (entries[index].steps >= mSteps)
+					{
+						mSteps = entries[index].steps;
+					}
 				}
 				else
 				{
 					//completely unreasonable number for a minute
 					entries[index].steps = 1000;
 				}
+
+				charTok = strtok(NULL, ",");
 				if (charTok != NULL && atoi(charTok) != 0)
 				{
 					if (atoi(charTok) == 1)
@@ -116,10 +133,14 @@ int main(void)
 				}
 
 				//for average
-				totalEntries++;
+				//totalEntries++;
 			}
 		}
 	}
+
+
+	avgHrate = avgHeartrate(entries);
+	worstSleep(entries, sleep);
 
 	fclose(inputStream);
 
@@ -127,8 +148,9 @@ int main(void)
 
 	//csv print
 
-	fprintf(outputStream, "%s\n", header);
-	//fprintf(outputStream, "%s\n", data n shit);
+	fprintf(outputStream, "%s", header);
+	fprintf(outputStream, "%lf, %lf, %d, %d, %lf, %d, %s\n", tCal, tDis, tFloors, tSteps, avgHrate, mSteps, sleep);
+
 	for (int i = 0; i < 1440; i++)
 	{
 		if (entries[i].minute[0] != '\0')

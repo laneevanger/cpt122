@@ -134,7 +134,6 @@
     <ClCompile Include="pa1.c" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CHANGE.csv" />
     <None Include="FitbitDataCopy.csv" />
     <None Include="Results.csv" />
   </ItemGroup>

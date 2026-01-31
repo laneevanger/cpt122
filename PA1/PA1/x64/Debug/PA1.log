@@ -1,7 +1,10 @@
 ﻿  main.c
-C:\Users\Lane\Desktop\PA1\PA1\main.c(36,18): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\Lane\Desktop\PA1\PA1\main.c(43,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\Lane\Desktop\PA1\PA1\main.c(54,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\Lane\Desktop\PA1\PA1\main.c(65,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\Lane\Desktop\PA1\PA1\main.c(77,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-  PA1.vcxproj -> C:\Users\Lane\Desktop\PA1\x64\Debug\PA1.exe
+C:\Users\Lane\Desktop\cpt122\PA1\PA1\main.c(42,18): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\cpt122\PA1\PA1\main.c(49,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\cpt122\PA1\PA1\main.c(61,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\cpt122\PA1\PA1\main.c(73,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\cpt122\PA1\PA1\main.c(86,20): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\Lane\Desktop\cpt122\PA1\PA1\main.c(103,31): warning C4018: '>=': signed/unsigned mismatch
+  pa1.c
+  Generating Code...
+  PA1.vcxproj -> C:\Users\Lane\Desktop\cpt122\PA1\x64\Debug\PA1.exe

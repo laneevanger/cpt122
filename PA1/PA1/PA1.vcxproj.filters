@@ -28,9 +28,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CHANGE.csv">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="FitbitDataCopy.csv">
       <Filter>Resource Files</Filter>
     </None>

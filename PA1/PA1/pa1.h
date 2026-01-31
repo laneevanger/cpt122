@@ -25,3 +25,5 @@ typedef struct fitbit
 
 int isDuplicate(FitbitData list[], int index);
 int timeToIndex(char time[]);
+void worstSleep(FitbitData list[], char out[]);
+double avgHeartrate(FitbitData list[]);
