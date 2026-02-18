@@ -1,17 +1,7 @@
 #include "record.h"
-#include "delete.h"
-#include "display.h"
-#include "edit.h"
-#include "insert.h"
-#include "load.h"
-#include "findSong.h"
+#include "modify.h"
 #include "menus.h"
-#include "node.h"
 #include "play.h"
-#include "rate.h"
-#include "shuffle.h"
-#include "sort.h"
-#include "store.h"
 
 int main(void)
 {
