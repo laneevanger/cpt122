@@ -127,14 +127,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="delete.c" />
+    <ClCompile Include="display.c" />
+    <ClCompile Include="edit.c" />
+    <ClCompile Include="findSong.c" />
+    <ClCompile Include="insert.c" />
+    <ClCompile Include="load.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="pa2.c" />
+    <ClCompile Include="menus.c" />
+    <ClCompile Include="node.c" />
+    <ClCompile Include="play.c" />
+    <ClCompile Include="rate.c" />
+    <ClCompile Include="shuffle.c" />
+    <ClCompile Include="sort.c" />
+    <ClCompile Include="store.c" />
+    <ClCompile Include="tests.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pa2.h" />
+    <ClInclude Include="consts.h" />
+    <ClInclude Include="delete.h" />
+    <ClInclude Include="display.h" />
+    <ClInclude Include="edit.h" />
+    <ClInclude Include="findSong.h" />
+    <ClInclude Include="insert.h" />
+    <ClInclude Include="load.h" />
+    <ClInclude Include="menus.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="rate.h" />
+    <ClInclude Include="record.h" />
+    <ClInclude Include="play.h" />
+    <ClInclude Include="shuffle.h" />
+    <ClInclude Include="sort.h" />
+    <ClInclude Include="store.h" />
+    <ClInclude Include="tests.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="musicPlayListCopy.csv" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

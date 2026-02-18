@@ -13,23 +13,158 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\tests">
+      <UniqueIdentifier>{64be4fb3-68fd-45f6-a796-ae307327d04d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\bin">
+      <UniqueIdentifier>{e0078a5f-56d5-4395-aabf-279eac8f556d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions">
+      <UniqueIdentifier>{ffeb1c00-dea6-479e-86fd-e5ef6f3ed71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Shuffle">
+      <UniqueIdentifier>{15ec66ac-ac2a-44cb-a8a5-9fac971efedf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Play">
+      <UniqueIdentifier>{37cf9d82-c0de-49d8-8e5a-91302b5fa944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Rate">
+      <UniqueIdentifier>{ab365e77-1a73-48df-96c2-0b95d0475b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Sort">
+      <UniqueIdentifier>{578a0ea8-c3a0-4985-8587-c76e848e1490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Store">
+      <UniqueIdentifier>{b4dad6ea-f287-4cb9-b9eb-2421de3ae15e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Edit">
+      <UniqueIdentifier>{826b9b89-cbb4-4410-98aa-27cc97a8c042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Delete">
+      <UniqueIdentifier>{3b26aa01-e340-44a0-9f9c-4de7776f456f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Insert">
+      <UniqueIdentifier>{804c970e-2d01-499e-a14e-fc54e564eeb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Display">
+      <UniqueIdentifier>{285d1696-5e10-400b-ab8e-403be1b9eaa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Load">
+      <UniqueIdentifier>{2c26e3d6-2600-4cc8-ac47-81b17d0ad84e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\findSong">
+      <UniqueIdentifier>{2fec967a-16b5-4a0a-a077-bfda7d124376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Menu stuff">
+      <UniqueIdentifier>{72eee43e-43e9-4a28-a15e-d52115efb885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\functions\Nodes">
+      <UniqueIdentifier>{cb1d2c8f-4d9f-4e9a-baaa-cf8f8a365b11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\bin</Filter>
     </ClCompile>
-    <ClCompile Include="pa2.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="delete.c">
+      <Filter>Source Files\functions\Delete</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="pa2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="display.c">
+      <Filter>Source Files\functions\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="edit.c">
+      <Filter>Source Files\functions\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="insert.c">
+      <Filter>Source Files\functions\Insert</Filter>
+    </ClCompile>
+    <ClCompile Include="load.c">
+      <Filter>Source Files\functions\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="findSong.c">
+      <Filter>Source Files\functions\findSong</Filter>
+    </ClCompile>
+    <ClCompile Include="menus.c">
+      <Filter>Source Files\functions\Menu stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="play.c">
+      <Filter>Source Files\functions\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="rate.c">
+      <Filter>Source Files\functions\Rate</Filter>
+    </ClCompile>
+    <ClCompile Include="shuffle.c">
+      <Filter>Source Files\functions\Shuffle</Filter>
+    </ClCompile>
+    <ClCompile Include="sort.c">
+      <Filter>Source Files\functions\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="store.c">
+      <Filter>Source Files\functions\Store</Filter>
+    </ClCompile>
+    <ClCompile Include="node.c">
+      <Filter>Source Files\functions\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="tests.c">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="musicPlayListCopy.csv">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="README.md">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="record.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="delete.h">
+      <Filter>Source Files\functions\Delete</Filter>
+    </ClInclude>
+    <ClInclude Include="display.h">
+      <Filter>Source Files\functions\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="edit.h">
+      <Filter>Source Files\functions\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="insert.h">
+      <Filter>Source Files\functions\Insert</Filter>
+    </ClInclude>
+    <ClInclude Include="load.h">
+      <Filter>Source Files\functions\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="findSong.h">
+      <Filter>Source Files\functions\findSong</Filter>
+    </ClInclude>
+    <ClInclude Include="menus.h">
+      <Filter>Source Files\functions\Menu stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Source Files\functions\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="play.h">
+      <Filter>Source Files\functions\Play</Filter>
+    </ClInclude>
+    <ClInclude Include="shuffle.h">
+      <Filter>Source Files\functions\Shuffle</Filter>
+    </ClInclude>
+    <ClInclude Include="sort.h">
+      <Filter>Source Files\functions\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="store.h">
+      <Filter>Source Files\functions\Store</Filter>
+    </ClInclude>
+    <ClInclude Include="consts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rate.h">
+      <Filter>Source Files\functions\Rate</Filter>
+    </ClInclude>
+    <ClInclude Include="tests.h">
+      <Filter>Source Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
