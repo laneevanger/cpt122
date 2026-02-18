@@ -1,5 +1,8 @@
 #include "consts.h"
 
+#ifndef RECORD_H
+#define RECORD_H
+
 //Rating – an integer (1 – 5)
 
 typedef struct duration
@@ -19,3 +22,4 @@ typedef struct record
 	int rating; 
 }Record;
 
+#endif

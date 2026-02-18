@@ -6,6 +6,8 @@ void songShuffle(int order[], int length)
 	int newNumber = 0;
 	int found = 0;
 
+	//if(order != NULL)
+	
 	for (int i = 0; i < length; i++)
 	{
 		order[i] = 0;

@@ -1,3 +1,5 @@
-#include "findSong.c"
-#include "menus.c"
-#include "node.c"
+#include "findSong.h"
+#include "menus.h"
+#include "node.h"
+
+void editSong(Node* playlist);

@@ -1,4 +1,4 @@
-#include "node.c"
+#include "node.h"
 
 enum Menu
 {

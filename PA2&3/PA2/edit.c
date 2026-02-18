@@ -41,7 +41,11 @@ void editSong(Node* playlist)
 		switch (choice)
 		{
 		case 1:
-			scanf("New Artist (no , or \"): %s", playlist->userPlaylist.artist);
+			do
+			{
+				system("cls");
+				scanf("New Artist (no , or \"): %s", playlist->userPlaylist.artist);
+			} while (strchr(playlist->userPlaylist.artist, "\"") != NULL && strchr(playlist->userPlaylist.artist, ",") != NULL);
 			break;
 		case 2:
 			scanf("New Album title: %s", playlist->userPlaylist.albumTitle);

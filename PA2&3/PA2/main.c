@@ -1,18 +1,17 @@
 #include "record.h"
-#include "delete.c"
-#include "display.c"
-#include "edit.c"
-#include "insert.c"
-#include "load.c"
-#include "findSong.c"
-#include "menus.c"
-#include "node.c"
-#include "play.c"
-#include "rate.c"
-#include "shuffle.c"
-#include "sort.c"
-#include "store.c"
-#include "assert.h"
+#include "delete.h"
+#include "display.h"
+#include "edit.h"
+#include "insert.h"
+#include "load.h"
+#include "findSong.h"
+#include "menus.h"
+#include "node.h"
+#include "play.h"
+#include "rate.h"
+#include "shuffle.h"
+#include "sort.h"
+#include "store.h"
 
 int main(void)
 {
@@ -24,6 +23,12 @@ int main(void)
 	int exit = 1;
 
 	srand((unsigned)time(NULL));
+
+	//no shuffle play
+	for (int i = 0; i < LITERALLYMAGICNUMBER; i++)
+	{
+		order[i] = i + 1;
+	}
 
 	FILE* inputStream = fopen("musicPlayListCopy.csv", "r");
 	FILE* outputStream = fopen("musicPlayListCopy.csv", "w");
