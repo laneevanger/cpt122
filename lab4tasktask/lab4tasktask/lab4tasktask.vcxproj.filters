@@ -15,21 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="lab4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pa2.c">
+    <ClCompile Include="hanoi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="maze.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pa2.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="lab4.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Downloads\musicPlayListCopy.csv">
-      <Filter>Resource Files</Filter>
-    </None>
+    <ClInclude Include="hanoi.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maze.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

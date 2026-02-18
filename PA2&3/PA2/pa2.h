@@ -4,6 +4,11 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include <windows.h>
+
+#define LITERALLYMAGICNUMBER 150
+#define SMALLERMAGIC 50
+#define TIMEMAGIC 6
 
 //Rating – an integer (1 – 5)
 
@@ -15,10 +20,10 @@ typedef struct duration
 
 typedef struct record 
 {
-	char artist[40];
-	char albumTitle[40];
-	char songTitle[40];
-	char genre[20];
+	char artist[SMALLERMAGIC];
+	char albumTitle[SMALLERMAGIC];
+	char songTitle[SMALLERMAGIC];
+	char genre[SMALLERMAGIC];
 	Duration songLength;
 	unsigned int plays;
 	int rating; 
@@ -47,4 +52,4 @@ enum Menu
 };
 
 void printMenu(void);
-int isMenuInput(int choice);
+int isMenuInput(int choice, int low, int high);

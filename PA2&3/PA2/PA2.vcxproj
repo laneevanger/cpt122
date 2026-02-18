@@ -134,7 +134,7 @@
     <ClInclude Include="pa2.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Downloads\musicPlayListCopy.csv" />
+    <None Include="musicPlayListCopy.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
