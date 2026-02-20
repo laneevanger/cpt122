@@ -1,9 +1,5 @@
 #include "tests.h"
 
-Node* headptr = {0};
-Record testRecord = {0};
-int order[1] = {0};
-
 //insert
 //starts with edge case of empty list (i dont even know if its possible)
 int insertTest(Node* playlist)
@@ -39,9 +35,9 @@ int deleteTest(Node* playlist)
 //shuffle
 //empty list
 //if it passes through it worked
-int shuffleTest(Node* playlist)
+int shuffleTest(Node* playlist, int order[])
 {
-	songShuffle(order, 20);
+	songShuffle(order, 1);
 
 	return 1;
 }

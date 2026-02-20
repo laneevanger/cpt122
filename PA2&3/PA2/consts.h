@@ -5,7 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <windows.h>
-#include "assert.h"
+#include <assert.h>
 
 #define LITERALLYMAGICNUMBER 150
 #define SMALLERMAGIC 50

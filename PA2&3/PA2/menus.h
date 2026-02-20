@@ -24,5 +24,4 @@ int isMenuInput(int choice, int low, int high);
 
 int findMenuInput(static char list[][LITERALLYMAGICNUMBER], int length);
 
-
 #endif //MENUS_H
