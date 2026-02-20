@@ -101,17 +101,19 @@ int loadSongs(FILE* file, Node** playlist)
 	char* tok;
 	int size = 0;
 
-	while(fgets(line, sizeof(line), file) != NULL && playlist != NULL)
+	while(fgets(line, sizeof(line), file) != NULL)
 	{
 		//kept comma in name
 		if(strtok(line, "\"") == NULL)
+		if (strchr(line, '"'))
 		{
 			tok = strtok(line, "\"");
-			sscanf(tok, "%s, %s", &lastName, &firstName);
+			sscanf(tok, "%s, %s", lastName, firstName);
 			strcat(firstName, " ");
-			//150s big enough 100%
 			strcat(firstName, lastName);
 			strcpy(newRecord.artist, firstName);
+
+			//strtok(NULL, ",");
 		}
 		//no comma in name
 		else
@@ -136,21 +138,21 @@ int loadSongs(FILE* file, Node** playlist)
 		tok = strtok(NULL, ",");
 		newRecord.plays = atoi(tok);
 
-		tok = strtok(NULL, ",");
+		tok = strtok(NULL, "\n");
 		newRecord.rating = atoi(tok);
 
 		size++;
 
 		Node* newNode = makeNode(newRecord);
 
-		if (playlist != NULL)
+		if(*playlist != NULL)
 		{
 			(*playlist)->pLast = newNode;
 			*playlist = newNode;
 		}
 		else
 		{
-			playlist = &newNode;
+			*playlist = newNode;
 		}
 
 	}
@@ -169,15 +171,17 @@ void storePlaylist(Node* playlist, FILE* file)
 		fprintf(file, "%s,%s", playlist->userPlaylist.songTitle, playlist->userPlaylist.genre);
 		fprintf(file, "%d:%d,", playlist->userPlaylist.songLength.minutes, playlist->userPlaylist.songLength.seconds);
 		fprintf(file, "%d,%d", playlist->userPlaylist.plays, playlist->userPlaylist.rating);
+		fprintf(file, "\n");
 
 		//all other entries
-		while (playlist->pNext != NULL)
+		while(playlist->pNext != NULL)
 		{
-			playlist = &((*playlist).pNext);
+			playlist = playlist->pNext;
 			fprintf(file, "%s,%s", playlist->userPlaylist.artist, playlist->userPlaylist.albumTitle);
 			fprintf(file, "%s,%s", playlist->userPlaylist.songTitle, playlist->userPlaylist.genre);
 			fprintf(file, "%d:%d,", playlist->userPlaylist.songLength.minutes, playlist->userPlaylist.songLength.seconds);
 			fprintf(file, "%d,%d", playlist->userPlaylist.plays, playlist->userPlaylist.rating);
+			fprintf(file, "\n");
 		}
 	}
 }
@@ -222,15 +226,15 @@ void displaySong(Node* list)
 			if (found == 0)
 			{
 				strcpy(allArtists[aLength], list->userPlaylist.artist);
+				aLength++;
 			}
 			list = list->pNext;
-			aLength++;
 		}
 
 		system("cls");
 		for (int i = 0; i < aLength; i++)
 		{
-			printf("%d. %s\n", i + 1, list[i]);
+			printf("%d. %s\n", i + 1, allArtists[i]);
 		}
 		do
 		{
@@ -249,7 +253,7 @@ void displaySong(Node* list)
 			printf("%d:%d,", headptr->userPlaylist.songLength.minutes, headptr->userPlaylist.songLength.seconds);
 			printf("%d,%d", headptr->userPlaylist.plays, headptr->userPlaylist.rating);
 		}
-		headptr = &((*headptr).pNext);
+		headptr = headptr->pNext;
 	}
 }
 
@@ -259,14 +263,15 @@ void deleteSong(Node** playlist)
 {
 	char thisArtist[LITERALLYMAGICNUMBER] = { 0 };
 	char thisSong[LITERALLYMAGICNUMBER] = { 0 };
-	Node* last = { 0 };
-	Node* next = { 0 };
+	Node* last = NULL;
+	Node* next = NULL;
 
 	findSong(*playlist, thisArtist, thisSong);
 
 	if (thisArtist != NULL && thisSong != NULL)
 	{
-		while (strcmp(&(*playlist)->userPlaylist.artist, thisArtist) != 0 && strcmp(&(*playlist)->userPlaylist.songTitle, thisSong) != 0)
+		while (strcmp((*playlist)->userPlaylist.artist, thisArtist) != 0 ||
+			     strcmp((*playlist)->userPlaylist.songTitle, thisSong) != 0) 
 		{
 			playlist = &((*playlist)->pNext);
 		}
@@ -277,7 +282,7 @@ void deleteSong(Node** playlist)
 
 	last->pNext = next;
 	next->pLast = last;
-	free(&(*playlist));
+	free(*playlist);
 }
 
 
@@ -288,8 +293,8 @@ void editSong(Node* playlist)
 {
 	char thisArtist[LITERALLYMAGICNUMBER] = { 0 };
 	char thisSong[LITERALLYMAGICNUMBER] = { 0 };
-	Node* last = { 0 };
-	Node* next = { 0 };
+	Node* last = NULL;
+	Node* next = NULL;
 	char change[SMALLERMAGIC];
 	int choice = 0;
 
@@ -297,7 +302,8 @@ void editSong(Node* playlist)
 
 	if (thisArtist != NULL && thisSong != NULL)
 	{
-		while (strcmp(playlist->userPlaylist.artist, thisArtist) != 0 && strcmp(playlist->userPlaylist.songTitle, thisSong) != 0)
+		while(strcmp(playlist->userPlaylist.artist, thisArtist) != 0 ||
+			    strcmp(playlist->userPlaylist.songTitle, thisSong) != 0) 
 		{
 			playlist = playlist->pNext;
 		}
@@ -316,7 +322,8 @@ void editSong(Node* playlist)
 		printf("8. Exit\n");
 		printf("\n");
 		scanf("%d", &choice);
-	} while (isMenuInput(choice, 1, 8));
+
+	} while(isMenuInput(choice, 1, 8) == 0);
 
 	if (choice < 8)
 	{
@@ -327,27 +334,27 @@ void editSong(Node* playlist)
 			do
 			{
 				system("cls");
-				scanf("New Artist (no , or \"): %s", playlist->userPlaylist.artist);
+				scanf("New Artist (no , or \"): %s", &playlist->userPlaylist.artist);
 			} while (strchr(playlist->userPlaylist.artist, "\"") != NULL && strchr(playlist->userPlaylist.artist, ",") != NULL);
 			break;
 		case 2:
-			scanf("New Album title: %s", playlist->userPlaylist.albumTitle);
+			scanf("New Album title: %s", &playlist->userPlaylist.albumTitle);
 			break;
 		case 3:
-			scanf("New Song title: %s", playlist->userPlaylist.songTitle);
+			scanf("New Song title: %s", &playlist->userPlaylist.songTitle);
 			break;
 		case 4:
-			scanf("New Genre: %s", playlist->userPlaylist.genre);
+			scanf("New Genre: %s", &playlist->userPlaylist.genre);
 			break;
 		case 5:
-			scanf("New Minutes: %d", playlist->userPlaylist.songLength.minutes);
-			scanf("New Seconds: %d", playlist->userPlaylist.songLength.seconds);
+			scanf("New Minutes: %d", &playlist->userPlaylist.songLength.minutes);
+			scanf("New Seconds: %d", &playlist->userPlaylist.songLength.seconds);
 			break;
 		case 6:
-			scanf("New Number of plays: %d", playlist->userPlaylist.plays);
+			scanf("New Number of plays: %d", &playlist->userPlaylist.plays);
 			break;
 		case 7:
-			scanf("New Rating: %d", playlist->userPlaylist.rating);
+			scanf("New Rating: %d", &playlist->userPlaylist.rating);
 			break;
 		case 8:
 			break;
@@ -489,7 +496,8 @@ void rateSong(Node* playlist)
 		printf("What would you like to rate the song:\n");
 		scanf(" %d", &rating);
 
-		while (strcmp(playlist->userPlaylist.artist, thisArtist) != 0 && strcmp(playlist->userPlaylist.songTitle, thisSong) != 0)
+		while(strcmp(playlist->userPlaylist.artist, thisArtist) != 0 ||
+			    strcmp(playlist->userPlaylist.songTitle, thisSong) != 0) 
 		{
 			playlist = playlist->pNext;
 		}
@@ -530,8 +538,10 @@ void songPlay(Node* playlist, int order[], int length)
 				playlist = playlist->pNext;
 				currentPos++;
 			}
+			
 		}
 
+		currentSong++;
 		system("cls");
 		printf("Now playing:\n");
 		printf("%s\n", playlist->userPlaylist.songTitle);
@@ -564,7 +574,7 @@ void songShuffle(int order[], int length)
 		do
 		{
 			found = 0;
-			newNumber = rand() % length;
+			newNumber = rand() % length + 1;
 
 			for (int k = 0; k < i; k++)
 			{
@@ -574,7 +584,7 @@ void songShuffle(int order[], int length)
 				}
 			}
 
-		}while (found == 0);
+		}while (found == 1);
 		order[i] = newNumber;
 	}
 }
@@ -585,7 +595,7 @@ void songShuffle(int order[], int length)
 //garbage data can be entered atm
 void insertSong(Node** playlist)
 {
-	Node* newNode = { 0 };
+	Node* newNode = malloc(sizeof(Node));
 
 	system("cls");
 	scanf("New Artist (no , or \"): %s", newNode->userPlaylist.artist);
@@ -604,7 +614,7 @@ void insertSong(Node** playlist)
 	system("cls");
 	scanf("New Rating: %d", newNode->userPlaylist.rating);
 
-	newNode->pNext = playlist;
-	playlist = &newNode;
+	newNode->pNext = *playlist;
+	*playlist = newNode;
 }
 

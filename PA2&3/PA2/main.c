@@ -7,10 +7,11 @@
 #include "play.h"
 #include "tests.h"
 
-//very broke
 int main(void)
 {
-	Node* playlist = {0};
+	FILE* inputStream;
+	FILE* outputStream;
+	Node* playlist = NULL;
 	int order[LITERALLYMAGICNUMBER] = {0};
 	int size = 0;
 	int valid = 0;
@@ -49,14 +50,12 @@ int main(void)
 
 	system("pause");
 
-	FILE* inputStream = fopen("musicPlayListCopy.csv", "r");
-	FILE* outputStream = fopen("musicPlayListCopy.csv", "w");
-
 	valid = 0;
-	//empty playlist
-	if(playlist->userPlaylist.artist == NULL)
+
+	while (exit)
 	{
-		while (exit)
+		//empty playlist
+		if (playlist == NULL)
 		{
 			do
 			{
@@ -65,12 +64,14 @@ int main(void)
 				printf("2. Exit\n\n");
 				scanf("%d", &menuChoice);
 
-			} while (menuChoice > 2 && menuChoice < 1);
+			} while (menuChoice < 1 || menuChoice > 2);
 
 			//load
 			if (menuChoice == 1)
 			{
+				inputStream = fopen("musicPlayListCopy.csv", "r");
 				size = loadSongs(inputStream, &playlist);
+				fclose(inputStream);
 				system("cls");
 				printf("Loaded\n");
 				system("pause");
@@ -81,14 +82,12 @@ int main(void)
 				printf("Exiting. . .\n");
 				exit = 0;
 			}
+
 		}
-		
-	}
-	//populated playlist
-	else
-	{
-		while (exit)
+		//populated playlist
+		else
 		{
+
 			do
 			{
 				system("cls");
@@ -100,14 +99,18 @@ int main(void)
 			switch (menuChoice)
 			{
 			case LOAD:
-				size = loadSongs(inputStream, &playlist);
+				inputStream = fopen("musicPlayListCopy.csv", "r");
+				loadSongs(inputStream, &playlist);
+				fclose(inputStream);
 				system("cls");
 				printf("Loaded\n");
 				system("pause");
 				break;
 
 			case STORE:
+				outputStream = fopen("musicPlayListCopy.csv", "w");
 				storePlaylist(playlist, outputStream);
+				fclose(outputStream);
 				system("cls");
 				printf("Stored\n");
 				system("pause");
@@ -171,11 +174,10 @@ int main(void)
 				exit = 0;
 				break;
 			}
-		}
 
+		}
 	}
-	fclose(inputStream);
-	fclose(outputStream);
+
 }
 
 #endif //MAIN_C
