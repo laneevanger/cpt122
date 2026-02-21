@@ -321,7 +321,7 @@ void editSong(Node* playlist)
 
 	findSong(playlist, thisArtist, thisSong);
 
-	if (thisArtist != NULL && thisSong != NULL)
+	if (strlen(thisArtist) > 0 && strlen(thisSong) > 0)
 	{
 		while(strcmp(playlist->userPlaylist.artist, thisArtist) != 0 ||
 			    strcmp(playlist->userPlaylist.songTitle, thisSong) != 0) 
@@ -356,35 +356,35 @@ void editSong(Node* playlist)
 			{
 				system("cls");
 				printf("New Artist: ");
-				scanf("%s", playlist->userPlaylist.artist);
-			} while (strchr(playlist->userPlaylist.artist, "\"") != NULL || 
-				         strchr(playlist->userPlaylist.artist, ",") != NULL);
+				scanf(" %49[^\n]", &playlist->userPlaylist.artist);
+			} while (strchr(playlist->userPlaylist.artist, '"') != NULL ||
+				         strchr(playlist->userPlaylist.artist, ',') != NULL);
 			break;
 		case 2:
 			printf("New Album title: ");
-			scanf("%s", playlist->userPlaylist.albumTitle);
+			scanf(" %49[^\n]", &playlist->userPlaylist.albumTitle);
 			break;
 		case 3:
 			printf("New Song title: ");
-			scanf("%s", playlist->userPlaylist.songTitle);
+			scanf(" %49[^\n]", &playlist->userPlaylist.songTitle);
 			break;
 		case 4:
 			printf("New Genre: ");
-			scanf("%s", playlist->userPlaylist.genre);
+			scanf(" %49[^\n]", &playlist->userPlaylist.genre);
 			break;
 		case 5:
 			printf("New Minutes: ");
-			scanf("%d", playlist->userPlaylist.songLength.minutes);
+			scanf("%d", &playlist->userPlaylist.songLength.minutes);
 			printf("\nNew Seconds: ");
-			scanf("%d", playlist->userPlaylist.songLength.seconds);
+			scanf("%d", &playlist->userPlaylist.songLength.seconds);
 			break;
 		case 6:
 			printf("New Number of plays: ");
-			scanf("%d", playlist->userPlaylist.plays);
+			scanf("%d", &playlist->userPlaylist.plays);
 			break;
 		case 7:
 			printf("New Number of Rating: ");
-			scanf("%d", playlist->userPlaylist.rating);
+			scanf("%d", &playlist->userPlaylist.rating);
 			break;
 		case 8:
 			break;
@@ -404,6 +404,8 @@ void songSort(Node* playlist, int length)
 
 	do
 	{
+		system("cls");
+
 		printf("1. Sort based on artist (A-Z)\n");
 		printf("2. Sort based on album title (A-Z)\n");
 		printf("3. Sort based on rating (1-5)\n");
@@ -417,7 +419,7 @@ void songSort(Node* playlist, int length)
 
 	switch (choice)
 	{
-		//artist
+	//artist
 	case 1:
 		for (int i = 0; i < length; i++)
 		{
@@ -430,7 +432,7 @@ void songSort(Node* playlist, int length)
 			for (int k = i + 1; k < length - 1; k++)
 			{
 				if (strcmp(cur->userPlaylist.artist, 
-					  next->userPlaylist.artist) < 0)
+					  next->userPlaylist.artist) > 0)
 				{
 					hold = cur->userPlaylist;
 					cur->userPlaylist = next->userPlaylist;
@@ -440,7 +442,7 @@ void songSort(Node* playlist, int length)
 			}
 		}
 		break;
-		//album title
+	//album title
 	case 2:
 		for (int i = 0; i < length; i++)
 		{
@@ -453,7 +455,7 @@ void songSort(Node* playlist, int length)
 			for (int k = i + 1; k < length - 1; k++)
 			{
 				if (strcmp(cur->userPlaylist.albumTitle, 
-					  next->userPlaylist.albumTitle) < 0)
+					  next->userPlaylist.albumTitle) > 0)
 				{
 					hold = cur->userPlaylist;
 					cur->userPlaylist = next->userPlaylist;
@@ -463,7 +465,7 @@ void songSort(Node* playlist, int length)
 			}
 		}
 		break;
-		//rating
+	//rating
 	case 3:
 		for (int i = 0; i < length; i++)
 		{
@@ -485,7 +487,7 @@ void songSort(Node* playlist, int length)
 			}
 		}
 		break;
-		//plays
+	//plays
 	case 4:
 		for (int i = 0; i < length; i++)
 		{
@@ -507,7 +509,7 @@ void songSort(Node* playlist, int length)
 			}
 		}
 		break;
-		//cancel
+	//cancel
 	case 5:
 		break;
 

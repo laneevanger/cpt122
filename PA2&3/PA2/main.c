@@ -17,6 +17,7 @@ int main(void)
 	int valid = 0;
 	int menuChoice = 0;
 	int exit = 1;
+	int tests = 0;
 
 	srand((unsigned)time(NULL));
 
@@ -27,16 +28,24 @@ int main(void)
 	}
 
 	//tests
+	printf("load tests? (1 or 0)\n");
+	scanf(" %d", &tests);
+	if (tests == 1)
+	{
+		Node* testList = { 0 };
+		Record testRecord = { 0 };
+		int testOrder[1] = { 0 };
 
-	Node* testptr = { 0 };
-	Record testRecord = { 0 };
-	int testOrder[1] = { 0 };
+		assert(insertTest(testList));
 
-	//insertTest();
+		printf("please delete the record");
+		assert(deleteTest(&testRecord));
 
-	//deleteTest();
+		assert(shuffleTest(testList, testOrder));
 
-	//shuffleTest();
+		printf("All tests passed");
+		system("pause");
+	}
 
 	//tests
 
