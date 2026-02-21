@@ -8,6 +8,6 @@
 
 int insertTest(Node* playlist);
 int deleteTest(Node* playlist);
-int shuffleTest(Node* playlist);
+int shuffleTest(Node* playlist, int order[]);
 
 #endif //TESTS_H

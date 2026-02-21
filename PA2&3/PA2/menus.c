@@ -28,24 +28,24 @@ int isMenuInput(int choice, int low, int high)
 
 }
 
-int findMenuInput(static char list[][LITERALLYMAGICNUMBER], int length)
+int findMenuInput(char list[][SMALLERMAGIC], int length)
 {
-	int out = 0;
+	int out;
 
 	system("cls");
+
 	for (int i = 0; i < length; i++)
 	{
 		printf("%d. %s\n", i + 1, list[i]);
-
-		if (length == i)
-		{
-			printf("%d. Cancel\n", i + 1);
-		}
 	}
+
+	printf("%d. Cancel\n", length + 1);
+
 	do
 	{
-		scanf("\nChoice: %d", &out);
-	} while (isMenuInput(out, 0, length) != 1);
+		printf("Choice: ");
+		scanf("%d", &out);
+	} while (isMenuInput(out, 1, length + 1) == 0);
 
 	return out - 1;
 }
