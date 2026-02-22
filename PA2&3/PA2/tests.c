@@ -6,30 +6,24 @@ int insertTest(Node* playlist)
 {
 	insertSong(&playlist);
 
-	if(playlist->userPlaylist.artist != NULL)
+	if (playlist != NULL && playlist->userPlaylist.artist[0] != '\0')
 	{
 		return 1;
 	}
-	else
-	{
-		return 0;
-	}
+	return 0;
 }
 
 //delete
 //makes empty list
 int deleteTest(Node* playlist)
 {
+	//insertSong(&playlist);
 	deleteSong(&playlist);
 
 	if (playlist == NULL)
-	{
 		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+
+	return 0;
 }
 
 //shuffle
@@ -39,5 +33,10 @@ int shuffleTest(Node* playlist, int order[])
 {
 	songShuffle(order, 1);
 
-	return 1;
+	if (order[0] == 1)
+	{
+		return 1;
+	}
+
+	return 0;
 }

@@ -6,8 +6,8 @@
 
 typedef struct node
 {
-	struct Node* pNext;
-	struct Node* pLast;
+	struct node* pNext;
+	struct node* pLast;
 	Record userPlaylist;
 }Node;
 

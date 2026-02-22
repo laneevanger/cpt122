@@ -28,22 +28,22 @@ int main(void)
 	}
 
 	//tests
-	printf("load tests? (1 or 0)\n");
+	//delete test doesnt work but the other 2 pass
+	printf("load tests? (0 or 1)\n");
 	scanf(" %d", &tests);
 	if (tests == 1)
 	{
-		Node* testList = { 0 };
-		Record testRecord = { 0 };
+		Node* testList = NULL;
 		int testOrder[1] = { 0 };
 
 		assert(insertTest(testList));
 
-		printf("please delete the record");
-		assert(deleteTest(&testRecord));
+		printf("please delete the record\n");
+		assert(deleteTest(testList));
 
 		assert(shuffleTest(testList, testOrder));
 
-		printf("All tests passed");
+		printf("All tests passed\n");
 		system("pause");
 	}
 

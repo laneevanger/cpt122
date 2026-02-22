@@ -263,35 +263,34 @@ void displaySong(Node* list)
 }
 
 
-//delete
 void deleteSong(Node** playlist)
 {
 	char thisArtist[LITERALLYMAGICNUMBER] = { 0 };
 	char thisSong[LITERALLYMAGICNUMBER] = { 0 };
-	Node* next = NULL;
-	Node* last = NULL;
-	Node* cur = NULL;
+	Node* cur = *playlist;
 
 	findSong(*playlist, thisArtist, thisSong);
 
-	cur = *playlist;
-
-	if (thisArtist[0] != '\0' && thisSong[0] != '\0')
+	if (thisArtist[0] == '\0' || thisSong[0] == '\0')
 	{
-		while (strcmp(cur->userPlaylist.artist, thisArtist) != 0 ||
-			     strcmp(cur->userPlaylist.songTitle, thisSong) != 0)
-		{
-			cur = cur->pNext;
-		}
+		return;
 	}
 
-	next = cur->pNext;
-	last = cur->pLast;
+	while (cur != NULL && (strcmp(cur->userPlaylist.artist, thisArtist) != 0 ||
+			                 strcmp(cur->userPlaylist.songTitle, thisSong) != 0))
+	{
+		cur = cur->pNext;
+	}
+
+	if (cur == NULL)
+	{
+		return;
+	}
 
 	if (cur->pLast != NULL)
 	{
-		last = cur->pNext;
-	}	
+		cur->pLast->pNext = cur->pNext;
+	}
 	else
 	{
 		*playlist = cur->pNext;
@@ -299,11 +298,10 @@ void deleteSong(Node** playlist)
 
 	if (cur->pNext != NULL)
 	{
-		next = cur->pLast;
+		cur->pNext->pLast = cur->pLast;
 	}
-		
-	free(cur);
 
+	free(cur);
 }
 
 
@@ -625,7 +623,7 @@ void insertSong(Node** playlist)
 	do
 	{
 		system("cls");
-		printf("New Artist: ");
+		printf("New Artist(no , or \"): ");
 		scanf(" %49[^\n]", newNode->userPlaylist.artist);
 	} while (strchr(newNode->userPlaylist.artist, '"') != NULL ||
 		        strchr(newNode->userPlaylist.artist, ',') != NULL);
