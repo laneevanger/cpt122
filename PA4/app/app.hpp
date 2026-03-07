@@ -3,12 +3,15 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+//for clear screen
+#include <cstdlib>
 
 using std::ifstream;
 using std::ofstream;
+using std::ostream;
 using std::ios;
 
-#include "app.hpp"
 #include "data.hpp"
 
 #define MAGICSTRLEN 150
@@ -16,48 +19,64 @@ using std::ios;
 
 enum Menu
 {
-	LOAD = 1,
-	LOADWDP,
-	LOADWEP,
-	STOREWDP,
-	STOREWEP,
-	DISPLAYWDP,
-	DISPLAYWEP,
-	EDITDDP,
-	EDITDEP,
-	SHUFFLE,
-	EXIT
+    LOADWDP = 1,
+    LOADWEP,
+    STOREWDP,
+    STOREWEP,
+    DISPLAYWDP,
+    DISPLAYWEP,
+    EDITDDP,
+    EDITDEP,
+    EXIT
 };
-
-//make your enum for the switch
 
 class FitnessAppWrapper
 {
-    public:
-        void printMenu();
-        bool validMenuInput(int input, int lowerRange, int higherRange);
-        void runApp();
+public:
+    FitnessAppWrapper()
+    {
 
-    private:
-        std::string name[MAGICSTRLEN];
-        ExcercisePlan ePlan[DAYSINAWEEK];
-        DietPlan dPlan[DAYSINAWEEK];
+    }
+    void printMenu();
+    bool validMenuInput(int input, int lowerRange, int higherRange);
+    void runApp();
 
-        ifstream mInputStream;
-        ofstream mOutputStream;
+    //took these off gemini because idk how else to do this
+    void clearScreen() 
+    {
+    #ifdef _WIN32
+        std::system("cls"); // Command for Windows
+    #else
+        // Assume POSIX or other systems
+        std::system("clear"); // Command for Linux/macOS
+    #endif
+    }
+    void pauseScreen()
+    {
+        std::cout << "Press Enter to continue...";
+        std::cin.get();
+    }
 
-        void loadDailyPlan(ifstream &fileStream, DietPlan &plan);
-        void loadWeeklyPlan(ifstream &fileStream, DietPlan weeklyPlan[]);
-        void displayWeeklyPlan();
-        void storeDailyPlan(ofstream &fileStream, DietPlan &plan);
-        void storeWeeklyPlan(ofstream &fileStream, DietPlan weeklyPlan[]);
+private:
+    DietPlan dPlan[DAYSINAWEEK];
+    ExcercisePlan ePlan[DAYSINAWEEK];
 
-        void loadDailyPlan(ifstream &fileStream, ExcercisePlan &plan);
-        void loadWeeklyPlan(ifstream &fileStream, ExcercisePlan weeklyPlan[]);
-        void displayWeeklyPlan();
-        void storeDailyPlan(ofstream &fileStream, ExcercisePlan &plan);
-        void storeWeeklyPlan(ofstream &fileStream, ExcercisePlan weeklyPlan[]);
+    //diet
+
+    void loadDailyPlan(ifstream& fileStream, DietPlan& plan);
+    void loadWeeklyPlan(ifstream& fileStream, DietPlan weeklyPlan[DAYSINAWEEK]);
+    void displayDailyPlan(ostream& fileStream, DietPlan plan);
+    void displayWeeklyPlan(ostream& fileStream, DietPlan weeklyPlan[DAYSINAWEEK]);
+    void storeDailyPlan(ofstream& fileStream, DietPlan& plan);
+    void storeWeeklyPlan(ofstream& fileStream, DietPlan weeklyPlan[DAYSINAWEEK]);
+
+    //excercise
+
+
+    void loadDailyPlan(ifstream& fileStream, ExcercisePlan& plan);
+    void loadWeeklyPlan(ifstream& fileStream, ExcercisePlan weeklyPlan[DAYSINAWEEK]);
+    void displayDailyPlan(ostream& fileStream, ExcercisePlan plan);
+    void displayWeeklyPlan(ostream& fileStream, ExcercisePlan weeklyPlan[DAYSINAWEEK]);
+    void storeDailyPlan(ofstream& fileStream, ExcercisePlan& plan);
+    void storeWeeklyPlan(ofstream& fileStream, ExcercisePlan weeklyPlan[DAYSINAWEEK]);
 };
-
-//needs extraction and insertion operators
-//overload equals
