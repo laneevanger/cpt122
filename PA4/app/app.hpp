@@ -17,14 +17,14 @@ using std::ios;
 enum Menu
 {
 	LOAD = 1,
-	STORE,
-	DISPLAY,
-	INSERT,
-	DEL,
-	EDIT,
-	SORT,
-	RATE,
-	PLAY,
+	LOADWDP,
+	LOADWEP,
+	STOREWDP,
+	STOREWEP,
+	DISPLAYWDP,
+	DISPLAYWEP,
+	EDITDDP,
+	EDITDEP,
 	SHUFFLE,
 	EXIT
 };
@@ -45,13 +45,19 @@ class FitnessAppWrapper
 
         ifstream mInputStream;
         ofstream mOutputStream;
-        void loadDailyPlan (ifstream &fileStream, DietPlan &plan);
-        void loadWeeklyPlan (ifstream &fileStream, DietPlan weeklyPlan[]);
-        void displayWeeklyPlan ();
-        void storeDailyPlan ();
-        void storeWeeklyPlan ();
+
+        void loadDailyPlan(ifstream &fileStream, DietPlan &plan);
+        void loadWeeklyPlan(ifstream &fileStream, DietPlan weeklyPlan[]);
+        void displayWeeklyPlan();
+        void storeDailyPlan(ofstream &fileStream, DietPlan &plan);
+        void storeWeeklyPlan(ofstream &fileStream, DietPlan weeklyPlan[]);
+
+        void loadDailyPlan(ifstream &fileStream, ExcercisePlan &plan);
+        void loadWeeklyPlan(ifstream &fileStream, ExcercisePlan weeklyPlan[]);
+        void displayWeeklyPlan();
+        void storeDailyPlan(ofstream &fileStream, ExcercisePlan &plan);
+        void storeWeeklyPlan(ofstream &fileStream, ExcercisePlan weeklyPlan[]);
 };
 
-
-
-
+//needs extraction and insertion operators
+//overload equals

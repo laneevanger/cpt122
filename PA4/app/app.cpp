@@ -94,7 +94,7 @@ void FitnessAppWrapper::runApp()
 //inputFile.close();
 //outputFile.close();
 
-
+//getln
 void loadDailyPlan (ifstream &fileStream, DietPlan &plan)
 {
 

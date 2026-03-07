@@ -21,10 +21,12 @@ class DietPlan
             return goal;
         }
 
+        //so close to java yet so far
         std::string getDate()
         {
             return std::to_string(month) + "/" + std::to_string(day) + "/" + std::to_string(year);
         }
+
         std::string setName(std::string input)
         {
             name = input;
@@ -78,6 +80,22 @@ class ExcercisePlan
         {
             return std::to_string(month) + "/" + std::to_string(day) + "/" + std::to_string(year);
         }
+
+        int getDay()
+        {
+            return day;
+        }
+
+        int getMonth()
+        {
+            return month;
+        }
+
+        int getYear()
+        {
+            return year;
+        }
+
         std::string setName(std::string input)
         {
             name = input;
@@ -88,7 +106,6 @@ class ExcercisePlan
             goal = input;
         }
 
-        //lwk just did it for fun
         std::string setDay(int input)
         {
             day = input;
@@ -102,11 +119,16 @@ class ExcercisePlan
             year = input;
         }
 
+        void operator=(const ExcercisePlan &other) const
+        {
+            //this->name = other->name;
+        }
+
     private:
         std::string name;
         std::string goal;
         int day;
         int month;
         int year;
-
+        
 };
