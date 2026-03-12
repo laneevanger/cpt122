@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/Lane/Desktop/cpt122/lab8/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -IC:\\Users\\Lane\\Desktop\\cpt122\\lab8\\lab8task1 /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++latest /FoCMakeFiles\\LAB8.dir\\bin\\main.cpp.obj /FdCMakeFiles\\LAB8.dir\\ /FS -c C:\\Users\\Lane\\Desktop\\cpt122\\lab8\\bin\\main.cpp",
+  "file": "C:/Users/Lane/Desktop/cpt122/lab8/bin/main.cpp",
+  "output": "C:/Users/Lane/Desktop/cpt122/lab8/build/CMakeFiles/LAB8.dir/bin/main.cpp.obj"
+}
+]
