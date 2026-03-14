@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.10)
+project(PA5)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+include_directories(PA5)
+
+add_executable(PA5 bin/main.cpp)

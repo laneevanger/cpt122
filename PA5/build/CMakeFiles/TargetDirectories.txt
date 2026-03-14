@@ -1,0 +1,3 @@
+C:/Users/Lane/Desktop/cpt122/PA5/build/CMakeFiles/PA5.dir
+C:/Users/Lane/Desktop/cpt122/PA5/build/CMakeFiles/edit_cache.dir
+C:/Users/Lane/Desktop/cpt122/PA5/build/CMakeFiles/rebuild_cache.dir
