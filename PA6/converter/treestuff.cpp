@@ -179,7 +179,7 @@ void BST::printWords(std::ifstream& infile)
             curNode = root;
             while(curNode != nullptr)
             {
-                if(curWord[i] == curNode->letter)
+                if(std::toupper(curWord[i]) == curNode->letter)
                 {
                     std::cout << curNode->morse + " ";
                     break;
