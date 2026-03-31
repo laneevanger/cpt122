@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/Lane/Desktop/cpt122/PA6/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/PA6.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\PA6.dir\\bin\\main.cpp.obj -c C:\\Users\\Lane\\Desktop\\cpt122\\PA6\\bin\\main.cpp",
+  "file": "C:/Users/Lane/Desktop/cpt122/PA6/bin/main.cpp",
+  "output": "CMakeFiles/PA6.dir/bin/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Lane/Desktop/cpt122/PA6/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/PA6.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\PA6.dir\\converter\\treestuff.cpp.obj -c C:\\Users\\Lane\\Desktop\\cpt122\\PA6\\converter\\treestuff.cpp",
+  "file": "C:/Users/Lane/Desktop/cpt122/PA6/converter/treestuff.cpp",
+  "output": "CMakeFiles/PA6.dir/converter/treestuff.cpp.obj"
+}
+]

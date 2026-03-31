@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug PA6",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "C:\\Users\\Lane\\Desktop\\cpt122\\PA6\\build\\PA6.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "C:\\Users\\Lane\\Desktop\\cpt122\\PA6\\files",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

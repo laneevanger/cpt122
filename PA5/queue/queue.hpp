@@ -30,7 +30,7 @@ class Queue
     QueueNode* getpHead();
     void printQueue();
     bool isEmpty();
-    bool enqueue(QueueNode* newData);
+    bool enqueue(QueueNode newData);
     Data* dequeue();
     void passTime();
     void updateTotalTime(int newTime);
