@@ -14,7 +14,7 @@ int main(void)
         {
             system("cls");
             printMenu();
-            std:: cout << "Choice:" << std::endl;
+            std::cout << "Choice:" << std::endl;
             std::cin >> menuChoice;
         } while(!isMenuInput(menuChoice, 1, 7));
         
