@@ -25,28 +25,3 @@ int isMenuInput(int choice, int low, int high)
 	}
 
 }
-
-/*
-//for bonus
-int findMenuInput(char list[][SMALLERMAGIC], int length)
-{
-	int out;
-
-	system("cls");
-
-	for (int i = 0; i < length; i++)
-	{
-		printf("%d. %s\n", i + 1, list[i]);
-	}
-
-	printf("%d. Cancel\n", length + 1);
-
-	do
-	{
-		printf("Choice: ");
-		scanf("%d", &out);
-	} while (isMenuInput(out, 1, length + 1) == 0);
-
-	return out - 1;
-}
-    */
